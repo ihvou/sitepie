@@ -1,2 +1,7 @@
 /vendor
 /.idea
+/logs/*
+/credentials/*
+/html_output/*
+client_secret.json
+client_secret_server.json

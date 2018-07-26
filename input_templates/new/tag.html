@@ -83,8 +83,10 @@
         <div class="post post--{{sub_type}}">
             <div class="post__content">
                 {{#isGif}}
-                    <img src="{{{main_image}}}" data-src="{{{media}}}" alt="">
-                    <a class="post__link post__link--hidden" target="_blank" rel="noopener noreferrer" href="{{{media}}}"></a>
+                    {{#media}}
+                    <img src="{{{main_image}}}" data-src="{{{.}}}" alt="">
+                    <a class="post__link post__link--hidden" target="_blank" rel="noopener noreferrer" href="{{{.}}}"></a>
+                    {{/media}}
                 {{/isGif}}
                 {{#isGallery}}
                     <div class="swiper-container">

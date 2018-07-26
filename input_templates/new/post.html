@@ -40,8 +40,10 @@
     <div class="post post--{{post.sub_type}}">
       <div class="post__content">
         {{#post.isGif}}
-          <img src="{{{post.main_image}}}" data-src="{{{post.media}}}" alt="">
-          <a class="post__link post__link--hidden" target="_blank" rel="noopener noreferrer" href="{{{post.media}}}"></a>
+          {{#post.media}}
+          <img src="{{{post.main_image}}}" data-src="{{{.}}}" alt="">
+          <a class="post__link post__link--hidden" target="_blank" rel="noopener noreferrer" href="{{{.}}}"></a>
+          {{/post.media}}
         {{/post.isGif}}
         {{#post.isGallery}}
           {{#post.media}}
