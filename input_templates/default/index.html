@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page</title>
+</head>
+<body>
+<p>Header Title - {{header.title}}</p>
+<p>Header Image - {{header.main_image}}</p>
+<p>Header description - {{header.description}}</p>
+{{# header.tags}}
+<p>Header tag - {{.}}</p>
+{{/ header.tags}}
+<p>Header media - {{header.media}}</p>
+
+<br><br>
+<p>POSTS</p>
+{{# posts}}
+<p>{{@index}}</p>
+<p>Sub type - {{sub_type}}</p>
+<p>Title - {{title}}</p>
+<p>Title Image - {{main_image}}</p>
+<p>Description - {{description}}</p>
+<p>Tags - {{tags}}</p>
+{{#media}}
+<p>Media - {{.}}</p>
+{{/media}}
+<p>Date - {{date}}</p>
+<p>Link - {{link}}</p>
+<br><br>
+{{/ posts}}
+
+<p>ADS</p>
+{{# ads}}
+    <p> Index page ad media - {{media}}</p>
+    <br><br>
+{{/ ads}}
+
+<p>PAGINATION</p>
+<p>
+{{# pagination.previous_page}}
+    <a href="{{pagination.previous_page}}">Previous Page</a>
+{{/ pagination.previous_page}}
+<br>
+{{# pagination.next_page}}
+    <a href="{{pagination.next_page}}">Next Page</a>
+{{/ pagination.next_page}}
+</p>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-56474466-7"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{ga_id}}');
+</script>
+</body>
+</html>

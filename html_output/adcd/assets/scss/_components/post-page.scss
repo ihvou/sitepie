@@ -1,0 +1,52 @@
+.post-page {
+    margin: 0 auto;
+    padding-top: 25px;
+
+    &__container {
+        margin: 0 auto;
+        max-width: 600px;
+        width: 100%;
+    }
+
+
+    &__link {
+        text-align: center;
+        color: #888;
+        cursor: pointer;
+    }
+    
+    .post {
+        margin: 0 auto;
+    }
+    
+    .ads-container {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    .post--ads iframe{
+        position: relative !important;
+    }
+}
+
+.blog-block {
+    margin: 40px 0;
+    display: flex;
+    background: white;
+    box-shadow: 1px 1px 2px 1px #bdbdbd;
+
+    &__info {
+        padding: 15px 12px;
+    }
+
+    &__title {
+        font-size: 28px;
+        font-weight: 600;
+        color: #000;
+        line-height: 28px;
+    }
+
+    &__description {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+}

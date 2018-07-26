@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{post.title}}</title>
+</head>
+<body>
+    <h1>Page for post with title - {{post.title}}</h1>
+
+    <p>Sub type - {{post.sub_type}}</p>
+    <p>Title - {{post.title}}</p>
+    <p>Title Image - {{post.main_image}}</p>
+    <p>Description - {{post.description}}</p>
+    <p>Tags - {{post.tags}}</p>
+    {{#media}}
+    <p>Media - {{.}}</p>
+    {{/media}}
+    <p>Date - {{post.date}}</p>
+    <p>Link - {{post.link}}</p>
+
+</body>
+</html>

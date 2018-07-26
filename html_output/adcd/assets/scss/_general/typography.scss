@@ -1,0 +1,38 @@
+h1 {
+  font-size: toRem(60px);
+  line-height: toRem(72px);
+}
+
+h2 {
+  font-size: toRem(52px);
+  line-height: toRem(64px);
+}
+
+h3 {
+  font-size: toRem(44px);
+  line-height: toRem(56px);
+}
+
+h4 {
+  font-size: toRem(22px);
+  line-height: toRem(28px);
+}
+
+.brand-subheading {
+  font-family: $secondary-font;
+  text-transform: uppercase;
+  color: $primary-brand-color;
+  letter-spacing: toRem(1px);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}

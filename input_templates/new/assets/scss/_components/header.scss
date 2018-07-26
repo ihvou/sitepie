@@ -1,0 +1,22 @@
+// ==========================================================================
+// Header styles
+// ==========================================================================
+.header {
+  position: relative;
+  z-index: 2;
+  
+  &__backgroud-img {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    min-height: 230px;
+    transform: translateY(-50%);
+  }
+
+
+  &__backgroud-img-wrapper {
+    position: relative;
+    min-height: 230px;
+    overflow: hidden;
+  }
+}
