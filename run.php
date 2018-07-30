@@ -36,6 +36,7 @@ try {
     \App\Logger\Logger::writeLog($logFileName,'Posts HTML files saved');
 
     $fileHandler->removeJsonFile();
+    $fileHandler->removeCsvFile();
 
 }catch (\Exception $e){
     \App\Logger\Logger::writeLog($logFileName,$e->getMessage());
