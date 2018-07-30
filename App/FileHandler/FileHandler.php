@@ -50,4 +50,8 @@ class FileHandler{
     public function removeJsonFile(){
         unlink(TMP_JSON_DIR.DIRECTORY_SEPARATOR.$this->sitename.'.json');
     }
+
+    public function removeCsvFile(){
+        unlink(TMP_CSV_DIR.DIRECTORY_SEPARATOR.$this->sitename.'.csv');
+    }
 }
