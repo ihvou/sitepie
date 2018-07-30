@@ -54,16 +54,16 @@
                 <p class="text">filters:</p>
 
                 <ul class="filter-list">
-                    {{#header.tags}}
+                    {{#posts_tags}}
                         <li class="filter-list__item"><a href="/{{.}}.html">{{.}}</a></li>
-                    {{/header.tags}}
+                    {{/posts_tags}}
                 </ul>
 
                 <div class="drop-down drop-down--hide">
                     <ul class="drop-down__list">
-                        {{#header.tags}}
+                        {{#posts_tags}}
                             <li class="drop-down__list-item"><a href="/{{.}}.html">{{.}}</a></li>
-                        {{/header.tags}}
+                        {{/posts_tags}}
                     </ul>
                 </div>
 

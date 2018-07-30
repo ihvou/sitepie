@@ -20,6 +20,7 @@ class Render{
 
         $indexPagesCount = $this->getPagesCount($posts);
         $renderData['header'] = (array)$this->fileJsonHandler->getHeader();
+        $renderData['posts_tags'] = $this->fileJsonHandler->getPostsTags();
         $renderData['ga_id'] = $this->fileJsonHandler->getGAId();
         $renderData['total_pages'] = $indexPagesCount;
 
@@ -75,6 +76,7 @@ class Render{
 
         $pagesCount = $this->getPagesCount($posts);
         $renderData['header'] = (array)$this->fileJsonHandler->getHeader();
+        $renderData['posts_tags'] = $this->fileJsonHandler->getPostsTags();
         $renderData['total_pages'] = $pagesCount;
         $renderData['tag'] = $tag;
 
@@ -121,6 +123,7 @@ class Render{
         $posts = $this->fileJsonHandler->getPosts();
         $renderData['ads'] = $this->fileJsonHandler->getPostPageAds();
         $renderData['header'] = (array)$this->fileJsonHandler->getHeader();
+        $renderData['posts_tags'] = $this->fileJsonHandler->getPostsTags();
         foreach ($posts as $post){
             $mustache = MustacheHandler::getRenderMustacheObject($this->template);
             $renderData['post'] = (array)$post;
