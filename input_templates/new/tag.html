@@ -120,15 +120,22 @@
                     {{{media}}}
                 {{/isAds}}
             </div>
+            {{^isAds}}
             <div class="post__info-block">
                 <a href="{{{postLink}}}" class="post__title">{{title}}<span class="post-icon"></span></a>
                 <ul class="tag-list">
                     {{#tags}}
-                    <li class="tag-list__item"><a href="/{{{.}}}.html">{{.}}</a></li>
+                    <li class="tag-list__item"><a href="{{{.}}}.html">{{.}}</a></li>
                     {{/tags}}
                 </ul>
                 <p class="post__info">{{description}}</p>
             </div>
+            {{/isAds}}
+            {{#isAds}}
+            <div class="post__info-block">
+                <a href="javascript:void(0)" class="post__title">Advertising<span class="post-icon"></span></a>
+            </div>
+            {{/isAds}}
         </div>
         {{/posts}}
     </div>
