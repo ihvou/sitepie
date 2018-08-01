@@ -2,80 +2,91 @@ const knot =(n={})=>{const t=Object.create(null);function e(n,e){return t[n]=t[n
 const Layzr =(t={})=>{let e,r,n,i=l();const o={normal:t.normal||"data-normal",retina:t.retina||"data-retina",srcset:t.srcset||"data-srcset",threshold:t.threshold||0},s=document.body.classList.contains("srcset")||"srcset"in document.createElement("img"),c=window.devicePixelRatio||window.screen.deviceXDPI/window.screen.logicalXDPI,a=knot({handlers:function(t){const e=t?"addEventListener":"removeEventListener";return["scroll","resize"].forEach(t=>window[e](t,u)),this},check:f,update:h});return a;function l(){return window.scrollY||window.pageYOffset}function u(){i=l(),e||(window.requestAnimationFrame(()=>f()),e=!0)}function d(t){const e=i,r=e+n,s=function(t){return t.getBoundingClientRect().top+i}(t),c=s+t.offsetHeight,a=o.threshold/100*n;return c>=e-a&&s<=r+a}function f(){return n=window.innerHeight,r.forEach(t=>d(t)&&function(t){if(a.emit("src:before",t),s&&t.hasAttribute(o.srcset))t.setAttribute("srcset",t.getAttribute(o.srcset));else{const e=c>1&&t.getAttribute(o.retina);t.setAttribute("src",e||t.getAttribute(o.normal))}a.emit("src:after",t),[o.normal,o.retina,o.srcset].forEach(e=>t.removeAttribute(e)),h()}(t)),e=!1,this}function h(){return r=Array.prototype.slice.call(document.querySelectorAll(`[${o.normal}]`)),this}};
 
 document.addEventListener("DOMContentLoaded", function() {
-    var main = new MainModule();
-    main.init();
+  var main = new MainModule();
+  main.init();
 });
 
+const VARS = {
+  MOBILE_WIDTH: 609
+}
+
 function MainModule() {
-    var self = this;
+  var self = this;
 
-    this.isOpenFilterList = false;
-    this.isMobile = window.innerWidth <= 609;
+  this.isOpenFilterList = false;
+  this.isMobile = () => window.innerWidth <= VARS.MOBILE_WIDTH;
 
-    this.DOM = {};
+  this.DOM = {};
 
-    this.DOM.playScreens = document.querySelectorAll('.play-screen');
-    this.DOM.gifs = document.querySelectorAll('.post--gif .post__content img');
+  this.DOM.playScreens = document.querySelectorAll('.play-screen');
+  this.DOM.gifs = document.querySelectorAll('.post--gif .post__content img');
+  this.DOM.title = document.querySelector('.title-js');
 
-    this.DOM.filterBtn = document.querySelector('.vertical-dots');
-    this.DOM.filterList = document.querySelector('.drop-down');
+  this.DOM.filterBtn = document.querySelector('.vertical-dots');
+  this.DOM.filterList = document.querySelector('.drop-down');
 
+  this.titleText = this.DOM.title ? this.DOM.title.innerText : '';
+  this.titleLength = this.titleText.length;
 
-    this.DOM.playScreens.forEach((item) => {
-        item.addEventListener('click', this.playClick)
-    })
+  this.isTagPage = !!this.DOM.title;
+  this.isIndex = !!document.querySelector('.index-js');
 
-    this.DOM.gifs.forEach((item) => {
-        item.addEventListener('click', this.gifClickHandler)
-    })
+  this.DOM.playScreens.forEach((item) => {
+    item.addEventListener('click', this.playClick)
+  })
 
-    this.DOM.filterBtn && this.DOM.filterBtn.addEventListener('click', this.toggleFilters.bind(null, this))
+  this.DOM.gifs.forEach((item) => {
+    item.addEventListener('click', this.gifClickHandler)
+  })
+
+  this.DOM.filterBtn && this.DOM.filterBtn.addEventListener('click', this.toggleFilters.bind(null, this))
 }
 
 MainModule.prototype.playClick = function(event) {
-    event.currentTarget.classList.add('play-screen--hide'); 
-    const video = event.currentTarget.parentNode.querySelector('video'); 
-    const play = video.getAttribute('data-play');
-    video.play(); 
+  event.currentTarget.classList.add('play-screen--hide');
+  const video = event.currentTarget.parentNode.querySelector('video');
+  const play = video.getAttribute('data-play');
+  video.play();
 
-    if (!play) {
-        video.setAttribute('data-play', 'true');
-        video.parentNode.querySelector('.post__link').classList.remove('post__link--hidden');
-    }
+  if (!play) {
+    video.setAttribute('data-play', 'true');
+    video.parentNode.querySelector('.post__link').classList.remove('post__link--hidden');
+  }
 };
 
 MainModule.prototype.gifClickHandler = function(event) {
-    const gifEl = event.currentTarget;
-    const source = gifEl.getAttribute('data-src');
-    const play = gifEl.getAttribute('data-play');
+  const gifEl = event.currentTarget;
+  const source = gifEl.getAttribute('data-src');
+  const play = gifEl.getAttribute('data-play');
 
-    if (!play) {
-        gifEl.setAttribute('data-play', 'true');
-        gifEl.setAttribute('src', source);
-        gifEl.parentNode.querySelector('.post__link').classList.remove('post__link--hidden');
-    }
+  if (!play) {
+    gifEl.setAttribute('data-play', 'true');
+    gifEl.setAttribute('src', source);
+    gifEl.parentNode.querySelector('.post__link').classList.remove('post__link--hidden');
+  }
 };
 
 MainModule.prototype.toggleFilters = (self) => {
-    event.stopPropagation();
-    
-    self.DOM.filterList.classList.remove('drop-down--hide')
-    self.isOpenFilterList = true;
+  event.stopPropagation();
+
+  self.DOM.filterList.classList.remove('drop-down--hide')
+  self.isOpenFilterList = true;
 };
 
 MainModule.prototype.getPath = function() {
-    const currentPage = +document.querySelector('.page-js').getAttribute('data-current-page');
-    let path = '';
+  const currentPage = +document.querySelector('.page-js').getAttribute('data-current-page');
+  let path = '';
 
-    if (window.location.pathname === '/') {
-      path = `index-${currentPage + this.loadCount + 1}.html`
-    } else {
-       path = window.location.pathname.replace(
-        new RegExp('(-[1-9]{1,3})?.html$'), `-${currentPage + this.loadCount + 1}.html`
-      );
-    }
+  if (window.location.pathname === '/') {
+    path = `page${currentPage + this.loadCount + 1}.html`
+  } else {
+    path = window.location.pathname.replace(
+      new RegExp('(-[1-9]{1,3})?.html$'), `${currentPage + this.loadCount + 1}.html`
+    );
+    path = path.replace('index','page');
+  }
 
-    return path;
+  return path;
 };
 
 MainModule.prototype.handleDisableJs = function() {
@@ -88,8 +99,12 @@ MainModule.prototype.handleDisableJs = function() {
   });
 
   const content = document.querySelector('.content-js');
-  content.classList.add('content--loading');
-  content.classList.remove('content--no-js');
+
+  if (content) {
+    content.classList.add('content--loading');
+    content.classList.remove('content--no-js');
+  }
+
 };
 
 MainModule.prototype.prepearForLazyLoading = function() {
@@ -97,72 +112,100 @@ MainModule.prototype.prepearForLazyLoading = function() {
     item.setAttribute('data-normal', item.getAttribute('src'));
     item.setAttribute('src', '');
   })
-}
+};
+
+MainModule.prototype.checkTitle = function() {
+  const divider = this.isMobile() ? 10 : 13;
+  const width = this.DOM.title.offsetWidth;
+  const ratio = width / divider;
+
+  this.DOM.title.innerText = ratio < this.titleLength
+    ? this.titleText.substr(0, ratio) + '...'
+    : this.titleText;
+};
+
 
 MainModule.prototype.init = function() {
 
-    this.handleDisableJs();
-    this.isMobile && this.prepearForLazyLoading();
+  this.handleDisableJs();
 
-    window.addEventListener('click', (e) => {
-        if (this.DOM.filterList && !this.DOM.filterList.contains(e.target)) {
-            this.DOM.filterList.classList.add('drop-down--hide')
-        }
+  this.isMobile() && this.prepearForLazyLoading();
+
+  window.addEventListener('click', (e) => {
+    if (this.DOM.filterList && !this.DOM.filterList.contains(e.target)) {
+      this.DOM.filterList.classList.add('drop-down--hide')
+    }
+  });
+
+  if (this.isTagPage) {
+    this.checkTitle();
+    window.addEventListener("resize", () => this.checkTitle.call(this) );
+  }
+
+  var grid = document.querySelector('.content');
+
+  var msnry = !this.isMobile() && grid && new Masonry( grid, {
+    itemSelector: 'none',
+    columnWidth: '.post',
+    fitWidth: true,
+    gutter: 10,
+    startOffset: 0
+  });
+
+  grid && imagesLoaded( grid, () => {
+    if (this.isMobile()) {
+      grid.classList.add('content--no-js');
+    } else {
+      msnry.options.itemSelector = '.post';
+      var items = grid.querySelectorAll('.post');
+      msnry.appended( items );
+    }
+
+    grid.classList.remove('content--loading');
+
+    var mySwiper = new Swiper('.swiper-container', {
+      speed: 400,
+      calculateHeight:true,
+      setWrapperSize:true,
+      spaceBetween: 0,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
     });
+  });
 
-    var grid = document.querySelector('.content');
-
-    var msnry = !this.isMobile && grid && new Masonry( grid, {
-        itemSelector: 'none',
-        columnWidth: '.post',
-        fitWidth: true,
-        gutter: 10,
-        startOffset: 0
+  if (this.isTagPage || this.isIndex) {
+    var infScroll = new InfiniteScroll( grid, {
+      path: this.getPath,
+      append: '.post:not(.post--info-block)',
+      history: false,
+      outlayer: msnry,
+      status: '.page-load-status',
     });
-
-    grid && imagesLoaded( grid, () => {
-        if (this.isMobile) {
-            grid.classList.add('content--no-js');
-        } else {
-            msnry.options.itemSelector = '.post';
-            var items = grid.querySelectorAll('.post');
-            msnry.appended( items );
-        }
-
-        grid.classList.remove('content--loading');
-
-        var mySwiper = new Swiper('.swiper-container', {
-            speed: 400,
-            // autoHeight: true,
-            calculateHeight:true,
-            setWrapperSize:true,
-            spaceBetween: 0,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev'
-            },
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-        });
+    infScroll.on('append', () => {
+      this.isMobile() && this.prepearForLazyLoading();
+      this.instance && this.instance.update();
     });
+  }
 
-    this.instance = Layzr({
-      threshold: 100
-    });
+  this.instance = Layzr({
+    threshold: 100
+  });
 
-    this.instance
-        .update()           // track initial elements
-        .check()            // check initial elements
-        .handlers(true);     // bind scroll and resize handlers
+  this.instance
+  .update()
+  .check()
+  .handlers(true);
 
+  this.instance.on('src:after', (element) => {
+  });
 
-    this.instance.on('src:after', (element) => {
-    })
-
-    this.instance.on('src:before', (element) => {
-    })
-}
-
+  this.instance.on('src:before', (element) => {
+  })
+};

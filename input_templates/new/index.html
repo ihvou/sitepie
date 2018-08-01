@@ -20,7 +20,7 @@
 
     <script src="https://unpkg.com/masonry-layout@4.2.1/dist/masonry.pkgd.min.js"></script>
 
-    <!--<script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script>-->
+    <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script>
 
     <script type="text/javascript" src="assets/js/main.js"></script>
 
@@ -143,17 +143,10 @@
         {{/posts}}
     </div>
 
-    {{# pagination.previous_page}}
-    <div class="page-load-status">
-        <a href="{{{pagination.previous_page}}}" class="view-more-link ">Previous page</a>
+    <div class="page-load-status page-js js-work" data-current-page="{{page_number}}">
+        <p class="view-more-link infinite-scroll-error">No more pages to load</p>
+        <p class="view-more-link pagination__next infinite-scroll-request">Next page</p>
     </div>
-    {{/ pagination.previous_page}}
-
-    {{# pagination.next_page}}
-    <div class="page-load-status">
-        <a href="{{{pagination.next_page}}}" class="view-more-link ">Next page</a>
-    </div>
-    {{/ pagination.next_page}}
 
 </main>
 {{#footer}}
