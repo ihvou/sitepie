@@ -1,7 +1,5 @@
 /vendor
 /.idea
-/logs/*
-/html_output/*
 /Web/*
 client_secret.json
 client_secret_server.json
