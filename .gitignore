@@ -2,6 +2,7 @@
 /.idea
 /logs/*
 /html_output/*
-/Web
+/Web/*
 client_secret.json
 client_secret_server.json
+.DS_Store
