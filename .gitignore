@@ -1,6 +1,9 @@
 /vendor
 /.idea
+/csv/*
+/html_output/*
 /Web/*
+/tmp_json/*
 client_secret.json
 client_secret_server.json
 .DS_Store
