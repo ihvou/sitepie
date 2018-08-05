@@ -6,7 +6,7 @@
  * Time: 5:49 PM
  */
 
-namespace App\Google;
+namespace Web\Google;
 
 class GoogleSpreadsheet
 {

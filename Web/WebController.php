@@ -1,16 +1,12 @@
 <?php
 
-namespace App\Web;
+namespace Web;
 
 use App\FileHandler\GeneratorFacade;
-use App\FileHandler\MustacheHandler;
-use App\FileHandler\WebFacade;
 use App\FileHandler\ZipHandler;
-use App\Google\GoogleDataSaver;
-use App\Google\GoogleSpreadsheet;
+use Web\Google\GoogleDataSaver;
+use Web\Google\GoogleSpreadsheet;
 use App\Logger\Logger;
-use PHPUnit\Runner\Exception;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class WebController extends BaseController{
 
@@ -24,6 +20,7 @@ class WebController extends BaseController{
             $renderData['url'] = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://".SessionHelper::getSiteName().".".$_SERVER['HTTP_HOST']."/index.html";
             $renderData['admin_url'] = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://".$_SERVER['HTTP_HOST']."/sites/".SessionHelper::getSiteName()."/admin";
         }
+        //echo WEB_VIEW_DIR;die();
         SessionHelper::purgeSession();
         $this->render('index',$renderData);
     }

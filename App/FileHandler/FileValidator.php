@@ -38,7 +38,7 @@ class FileValidator{
 
     private function isCsvFileExist()
     {
-        $filePath = TMP_CSV_DIR.DIRECTORY_SEPARATOR.$this->sitename.'.csv';
+        $filePath = CSV_DIR.DIRECTORY_SEPARATOR.$this->sitename.'.csv';
         return file_exists($filePath);
     }
 

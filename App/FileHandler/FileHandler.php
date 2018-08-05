@@ -44,7 +44,7 @@ class FileHandler{
 
     public function getCsvFileName()
     {
-        return TMP_CSV_DIR.DIRECTORY_SEPARATOR.$this->sitename.'.csv';
+        return CSV_DIR.DIRECTORY_SEPARATOR.$this->sitename.'.csv';
     }
 
     public function removeJsonFile(){
@@ -52,6 +52,6 @@ class FileHandler{
     }
 
     public function removeCsvFile(){
-        unlink(TMP_CSV_DIR.DIRECTORY_SEPARATOR.$this->sitename.'.csv');
+        unlink(CSV_DIR.DIRECTORY_SEPARATOR.$this->sitename.'.csv');
     }
 }

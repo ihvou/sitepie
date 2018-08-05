@@ -6,7 +6,7 @@
  * Time: 8:57 PM
  */
 
-namespace App\Web;
+namespace Web;
 
 
 class FormValidator

@@ -6,7 +6,7 @@
  * Time: 8:33 PM
  */
 
-namespace App\Web;
+namespace Web;
 
 use App\FileHandler\MustacheHandler;
 

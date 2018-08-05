@@ -6,7 +6,7 @@
  * Time: 8:41 PM
  */
 
-namespace App\Web;
+namespace Web;
 
 use App\Helper\Helper;
 use App\ServerHandler\ServerHandler;

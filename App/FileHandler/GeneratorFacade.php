@@ -51,7 +51,6 @@ class GeneratorFacade
             \App\Logger\Logger::writeLog($this->logFileName,'Assets files saved');
 
             $fileHandler->removeJsonFile();
-            $fileHandler->removeCsvFile();
 
         }catch (ValidatorExcetion $e){
             \App\Logger\Logger::writeLog($this->logFileName,$e->getMessage().' :: '.$e->getFile().' :: '.$e->getLine(),false);

@@ -6,7 +6,7 @@
  * Time: 4:53 PM
  */
 
-namespace App\Google;
+namespace Web\Google;
 
 
 class GoogleDataSaver
@@ -18,7 +18,7 @@ class GoogleDataSaver
     }
 
     public function saveDataToCsv($siteName,$data){
-        $fileName = TMP_CSV_DIR.DIRECTORY_SEPARATOR.$siteName.'.csv';
+        $fileName = CSV_DIR.DIRECTORY_SEPARATOR.$siteName.'.csv';
         if(file_exists($fileName)){
             unlink($fileName);
         }

@@ -6,7 +6,7 @@
  * Time: 11:55 PM
  */
 
-namespace App\Web;
+namespace Web;
 
 
 class SessionHelper
