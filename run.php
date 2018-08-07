@@ -34,6 +34,8 @@ try {
     \App\Logger\Logger::writeLog($logFileName,'Posts HTML files saved');
     $render->renderPostsPages();
     \App\Logger\Logger::writeLog($logFileName,'Posts HTML files saved');
+    $render->copyAssets();
+    \App\Logger\Logger::writeLog($logFileName,'Assets files saved');
 
     $fileHandler->removeJsonFile();
 
