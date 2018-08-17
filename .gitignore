@@ -7,4 +7,6 @@
 /tmp_json/*
 client_secret.json
 client_secret_server.json
+index.php
+/public
 .DS_Store
