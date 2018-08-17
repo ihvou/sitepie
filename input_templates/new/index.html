@@ -44,7 +44,7 @@
         <div class="container flex">
             <div class="avatar-container">
                 <div class="avatar">
-                    <a href="index.html"><img src="{{header.media}}" alt=""></a>
+                    <a href="index.html"><img src="{{{header.media}}}" alt=""></a>
                 </div>
             </div>
 
@@ -83,7 +83,7 @@
 
         <div class="post post--info-block">
             <h2 class="post__page-title">{{header.title}}</h2>
-            <p class="post__page-description">{{header.description}}</p>
+            <p class="post__page-description">{{{header.description}}}</p>
         </div>
 
         {{#posts}}
@@ -135,7 +135,7 @@
                     <li class="tag-list__item"><a href="{{{.}}}.html">{{.}}</a></li>
                     {{/tags}}
                 </ul>
-                <p class="post__info">{{description}}</p>
+                <p class="post__info">{{{description}}}</p>
             </div>
             {{/isAds}}
             {{#isAds}}

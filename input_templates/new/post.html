@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{post.title}}</title>
   <!-- Basic page info =================================================== -->
-  <meta name="description" content="{{post.description}}">
+  <meta name="description" content="{{{post.description}}}">
 
   <!-- Stylesheet ======================================================== -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -63,7 +63,7 @@
             {{/post.media}}
           </video>
           {{#post.media}}
-            <a class="post__link post__link--hidden" target="_blank" rel="noopener noreferrer" href="{{.}}"></a>
+            <a class="post__link post__link--hidden" target="_blank" rel="noopener noreferrer" href="{{{.}}}"></a>
           {{/post.media}}
         {{/post.isVideo}}
         {{#post.isAds}}
@@ -77,7 +77,7 @@
             <li class="tag-list__item"><a href="/{{{.}}}.html">{{.}}</a></li>
           {{/post.tags}}
         </ul>
-        <p class="post__info">{{post.description}}</p>
+        <p class="post__info">{{{post.description}}}</p>
       </div>
     </div>
 
@@ -94,10 +94,10 @@
     <p class="post-page__link">View more from</p>
 
     <div class="blog-block">
-      <a href="index.html"><img src="{{header.media}}" alt="avatar"></a>
+      <a href="index.html"><img src="{{{header.media}}}" alt="avatar"></a>
       <div class="blog-block__info">
         <h3 class="blog-block__title"> <a href="/index.html">{{header.title}}</a></h3>
-        <p class="blog-block__description">{{header.description}}</p>
+        <p class="blog-block__description">{{{header.description}}}</p>
 
         <ul class="tag-list">
           {{#header_tags}}
