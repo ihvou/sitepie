@@ -21,7 +21,7 @@ class Render{
         $indexPagesCount = $this->getPagesCount($posts);
         $renderData['header'] = (array)$this->fileJsonHandler->getHeader();
         $renderData['posts_tags'] = $this->fileJsonHandler->getPostsTags();
-        $renderData['ga_id'] = $this->fileJsonHandler->getGAId();
+        $renderData['header_script'] = $this->fileJsonHandler->getHeaderScript();
         $renderData['total_pages'] = $indexPagesCount;
 
         for($i = 1; $i <= $indexPagesCount; $i++){

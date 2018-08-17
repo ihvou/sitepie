@@ -19,6 +19,12 @@ class FileJsonHandler{
 
     private $gaId = null;
 
+    private $headerScript = null;
+
+    private $bodyScript = null;
+
+    private $customData = [];
+
     private $ads = [];
 
     private $posts = [];
@@ -48,20 +54,45 @@ class FileJsonHandler{
         if($this->header){
             return $this->header;
         }
-        $header = $this->getSingleItemByItemTypeAndSubtype('header','basic', true);
+        $header = $this->getSingleItemByItemTypeAndSubtype('header','main', true);
         $header->tags = explode(',',$header->tags);
         $this->header = $header;
         return $this->header;
     }
 
-    public function getGAId()
+    public function getHeaderScript()
     {
-        if($this->gaId){
-            return $this->gaId;
+        if($this->headerScript){
+            return $this->headerScript;
         }
-        $gaIdArr = (array)$this->getSingleItemByItemTypeAndSubtype('header','GA_id');
-        $this->gaId = $gaIdArr['title'];
-        return $this->gaId;
+        $headerScript = (array)$this->getSingleItemByItemTypeAndSubtype('header','script');
+        $this->headerScript = ($headerScript) ? $headerScript['media'] : false;
+        return $this->headerScript;
+    }
+
+    public function getBodyScript()
+    {
+        if($this->bodyScript){
+            return $this->bodyScript;
+        }
+        $script = (array)$this->getSingleItemByItemTypeAndSubtype('body','script');
+        $this->bodyScript = ($script) ? $script['media'] : false;
+        return $this->bodyScript;
+    }
+
+    public function getCustomData() {
+        if($this->customData){
+            return $this->customData;
+        }
+        $customData = $this->getCollectionItemByItemType('custom_data');
+        if(!$customData){
+            return [];
+        }
+        foreach ($customData as $item) {
+            $item = (array)$item;
+            $this->customData[$item['sub_type']] = $item;
+        }
+        return $customData;
     }
 
     public function getFooter()

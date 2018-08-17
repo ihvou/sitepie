@@ -18,17 +18,19 @@ class CsvDataValidator
     private $indexAdCount = 0;
     private $postPageAdCount = 0;
 
-    private $types = ['header','post','ad','footer'];
+    private $types = ['header','post','ad','footer','custom_data','body'];
 
     private $adSubtypes = ['index_page_ad','post_page_ad','popunder_script'];
 
     private $requiredFields = [
         'header' =>
             [
-                'basic' => ['title','main_image','description','tags','date']
+                'main' => ['title','main_image','description','tags','date']
             ],
         'post' => ['title','date'],//['title','tags','date'],
-        'ad' => ['media']
+        'ad' => ['media'],
+        'body' => ['media'],
+        'custom_data' => ['media']
         ];
 
     public function validate($data){
@@ -46,7 +48,7 @@ class CsvDataValidator
             if(!in_array($itemArray['item_type'],$this->types)){
                 throw new CsvDataException('Data error. Row #'.($i+1).' Incorrect type. Valid types - '.implode(',',$this->types));
             }
-            if($itemArray['item_type'] == 'header' && $itemArray['sub_type'] == 'basic'){
+            if($itemArray['item_type'] == 'header' && $itemArray['sub_type'] == 'main'){
                 $this->headerCount++;
                 $this->checkHeader($itemArray, $i);
             }
@@ -80,8 +82,8 @@ class CsvDataValidator
     }
 
     private function checkHeader($headerData, $rowNumber){
-        foreach ($this->requiredFields['header']['basic'] as $headerField) {
-            if((!isset($headerData[$headerField]) || !trim($headerData[$headerField])) && $headerData['sub_type'] == 'basic'){
+        foreach ($this->requiredFields['header']['main'] as $headerField) {
+            if((!isset($headerData[$headerField]) || !trim($headerData[$headerField])) && $headerData['sub_type'] == 'main'){
                 throw new CsvDataException('Empty data: Row #'.($rowNumber+1).': "header" row column "'.$headerField.'"');
             }
         }
