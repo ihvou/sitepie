@@ -1,6 +1,7 @@
 /vendor
 /.idea
 /csv/*
+!/csv/sample.csv
 /html_output/*
 /logs/*
 /Web/*
