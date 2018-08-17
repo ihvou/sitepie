@@ -1,16 +1,8 @@
-Описание скрипта генератора статических сайтов
 
-1. Необходимо создать новую папку с названием сайта в папке 
-input(например, input/test/). имя должно быть без пробелов. 
-Скопировать в папку csv файл и шаблоны index.html, post.html 
-и tag.html
+1. Run command - php run.php <csv_file_name> <template_name>
+(In example php run.php sample new)
 
-2. Запуск из командной строки - php run.php <имя_папки>
-(например, php run.php test)
+2. Output site files are in folders html_output/<csv_file_name>
+(In example, html_output/sample)
 
-3. Выходные файлы будут записаны в папку html_output/<имя_папки>
-(например, html_output/test)
-
-4. Страницы постов сохраняются с именем post-<title_поста_в_csv>.html
-
-5. Логи сохраняются в папке log
+3. Logs saves to /log folder

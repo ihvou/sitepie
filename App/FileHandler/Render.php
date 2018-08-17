@@ -135,7 +135,7 @@ class Render{
         $renderData['header_script'] = $this->fileJsonHandler->getHeaderScript();
         $renderData['body_script'] = $this->fileJsonHandler->getBodyScript();
         $renderData['footer'] = $this->fileJsonHandler->getFooter();
-        
+
         foreach ($posts as $post){
             $mustache = MustacheHandler::getRenderMustacheObject($this->template);
             $renderData['post'] = (array)$post;
