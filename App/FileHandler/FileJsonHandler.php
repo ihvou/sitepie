@@ -17,8 +17,6 @@ class FileJsonHandler{
 
     private $footer = null;
 
-    private $gaId = null;
-
     private $headerScript = null;
 
     private $bodyScript = null;
@@ -157,11 +155,12 @@ class FileJsonHandler{
         }
         $tags = array_map(function($tag){
             return strtolower(preg_replace('/\s+/','-',trim($tag)));
-        },explode(',', $this->getHeader()['tags']));
+        },$this->getHeader()->tags);
         if(!$tags){
             throw new CsvException("There is no tags in 'header' row in your csv file");
         }
         $this->tags = $tags;
+        return $this->tags;
     }
 
     public function getPostsTags(){
