@@ -144,6 +144,12 @@
         <p class="view-more-link pagination__next infinite-scroll-request">Next page</p>
     </div>
 
+    {{#pagination.next_page}}
+    <div class="page-load-status no-js">
+        <a href="{{pagination.next_page}}" class="view-more-link ">Next page</a>
+    </div>
+    {{/pagination.next_page}}
+
 </main>
 {{#footer}}
 <footer class="footer">
