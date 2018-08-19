@@ -8,12 +8,10 @@
     },
     "autoload": {
         "files": [
-            "App/config.php",
-            "Web/web_config.php"
+            "App/config.php"
         ],
         "psr-4": {
-            "App\\": "App",
-            "Web\\": "Web"
+            "App\\": "App"
         }
     }
 }
