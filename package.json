@@ -1,0 +1,36 @@
+{
+  "name": "templates4242",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "gifffer": "^1.5.1",
+    "layzr.js": "^2.2.2",
+    "mustache": "^2.3.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^6.0.6",
+    "scss-loader": "0.0.1",
+    "style-loader": "^0.19.0",
+    "swiper": "^4.2.6",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "browser-sync": "^2.18.13",
+    "browser-sync-webpack-plugin": "^1.2.0"
+  },
+  "scripts": {
+    "start": "webpack -d --watch",
+    "build": "webpack -p",
+    "deploy": "surge . http://templates4242.surge.sh",
+    "make-templates": "node ./helpers/transformTemplates.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
