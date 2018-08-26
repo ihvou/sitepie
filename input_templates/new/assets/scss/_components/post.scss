@@ -160,7 +160,7 @@
 
   .swiper-button-prev, .swiper-button-next {
     width: 30px;
-    background: url('assets/images/icons/left-arrow.svg') no-repeat center center rgba(0, 0, 0, 0.2);
+    background: url('/assets/images/icons/left-arrow.svg') no-repeat center center rgba(0, 0, 0, 0.2);
     background-size: 30px;
     width: 50%;
     height: 100%;
@@ -208,10 +208,9 @@
 }
 
 .tag-list {
-  display: flex;
 
   &__item {
-    display: flex;
+    display: inline-block;
     color: #b2b2b2;
     font-size: 14px;
     font-style: italic;
@@ -239,7 +238,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('assets/images/icons/play-button.svg');
+  background: url('/assets/images/icons/play-button.svg');
   background-size: 60px;
   background-repeat: no-repeat;
   background-position: center center;

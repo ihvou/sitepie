@@ -21,8 +21,14 @@
 
 
 .content {
+  column-count: 4;
+
   &--loading {
     visibility: hidden;
+  }
+
+  .post {
+    display: inline-block;
   }
 
   &--no-js {
