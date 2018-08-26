@@ -42,30 +42,60 @@
     <div class="post post--{{post.sub_type}}">
       <div class="post__content">
         {{#post.isGif}}
-          {{#post.media}}
-          <img src="{{{.}}}" data-src="{{{.}}}" alt="">
-          <a class="post__link post__link--hidden" target="_blank" rel="noopener noreferrer" href="{{{.}}}"></a>
-          {{/post.media}}
+          {{#post.link}}
+            <img src="{{{post.link}}}" data-src="{{{post.link}}}" alt="">
+            <a class="post__link post__link--hidden" target="_blank" rel="noopener noreferrer" href="{{{post.link}}}"></a>
+          {{/post.link}}
+          {{^post.link}}
+            {{#post.media}}
+              <img src="{{{.}}}" data-src="{{{.}}}" alt="">
+              <a class="post__link post__link--hidden" target="_blank" rel="noopener noreferrer" href="{{{.}}}"></a>
+            {{/post.media}}
+          {{/post.link}}
         {{/post.isGif}}
+
         {{#post.isGallery}}
-          {{#post.media}}
-            <img class="post__img" src="{{{.}}}" alt="image">
-          {{/post.media}}
+          {{#post.link}}
+            <img class="post__img" src="{{{post.link}}}" alt="image">
+          {{/post.link}}
+          {{^post.link}}
+            {{#post.media}}
+              <img class="post__img" src="{{{.}}}" alt="image">
+            {{/post.media}}
+          {{/post.link}}
         {{/post.isGallery}}
+
         {{#post.isImage}}
-          <img class="post__img" src="{{{post.main_image}}}" alt="image">
+          {{#post.link}}
+            <img class="post__img" src="{{{post.link}}}" alt="image">
+          {{/post.link}}
+          {{^post.link}}
+            <img class="post__img" src="{{{post.main_image}}}" alt="image">
+          {{/post.link}}
         {{/post.isImage}}
+
         {{#post.isVideo}}
           <div class="play-screen"></div>
           <video class="video-js">
-            {{#post.media}}
-            <source src="{{{.}}}" type="video/mp4">
-            {{/post.media}}
+            {{#post.link}}
+              <source src="{{{post.link}}}" type="video/mp4">
+            {{/post.link}}
+            {{^post.link}}
+              {{#post.media}}
+                <source src="{{{.}}}" type="video/mp4">
+              {{/post.media}}
+            {{/post.link}}
           </video>
-          {{#post.media}}
+          {{#post.link}}
+            <a class="post__link post__link--hidden" target="_blank" rel="noopener noreferrer" href="{{{post.link}}}"></a>
+          {{/post.link}}
+          {{^post.link}}
+            {{#post.media}}
             <a class="post__link post__link--hidden" target="_blank" rel="noopener noreferrer" href="{{{.}}}"></a>
-          {{/post.media}}
+            {{/post.media}}
+          {{/post.link}}
         {{/post.isVideo}}
+
         {{#post.isAds}}
           {{{media}}}
         {{/post.isAds}}
