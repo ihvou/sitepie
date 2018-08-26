@@ -116,6 +116,7 @@ class FileJsonHandler{
         if($this->posts){
             return $this->posts;
         }
+        $postSlugs = [];
         $this->posts = $this->getCollectionItemByItemType('post');
         foreach ($this->posts as &$postItem){
             switch ($postItem->sub_type) {
@@ -143,9 +144,19 @@ class FileJsonHandler{
                 return strtolower(preg_replace('/\s+/','-',trim($tag)));
             },explode(',',$postItem->tags));
 
-            $postItem->postLink = 'post-'.str_replace(' ','-',strtolower(preg_replace("/[^ \w]+/", "",$postItem->title))).'.html';
+            //prevent duplicated links for posts with the same title
+            $postSlug = $this->getPostSlug($postItem->title);
+            $postSlugs[] = $postSlug;
+            $slugNumber = array_count_values($postSlugs)[$postSlug] > 1 ? (array_count_values($postSlugs)[$postSlug]-1) : '';
+
+            $postItem->postLink = $postSlug.$slugNumber.'.html';
         }
         return $this->posts;
+    }
+
+    private function getPostSlug($postTitle){
+
+        return 'post-'.str_replace(' ','-',strtolower(preg_replace("/[^ \w]+/", "",$postTitle)));
     }
 
     public function getHeaderTags()
