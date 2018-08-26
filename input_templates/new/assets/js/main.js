@@ -144,21 +144,21 @@ MainModule.prototype.init = function() {
 
   var grid = document.querySelector('.content');
 
-  var msnry = !this.isMobile() && grid && new Masonry( grid, {
-    itemSelector: 'none',
-    columnWidth: '.post',
-    fitWidth: true,
-    gutter: 10,
-    startOffset: 0
-  });
+  // var msnry = !this.isMobile() && grid && new Masonry( grid, {
+  //   itemSelector: 'none',
+  //   columnWidth: '.post',
+  //   fitWidth: true,
+  //   gutter: 10,
+  //   startOffset: 0
+  // });
 
   grid && imagesLoaded( grid, () => {
     if (this.isMobile()) {
       grid.classList.add('content--no-js');
     } else {
-      msnry.options.itemSelector = '.post';
-      var items = grid.querySelectorAll('.post');
-      msnry.appended( items );
+      // msnry.options.itemSelector = '.post';
+      // var items = grid.querySelectorAll('.post');
+      // msnry.appended( items );
     }
 
     grid.classList.remove('content--loading');
@@ -185,7 +185,7 @@ MainModule.prototype.init = function() {
       path: this.getPath,
       append: '.post:not(.post--info-block)',
       history: false,
-      outlayer: msnry,
+      // outlayer: msnry,
       status: '.page-load-status',
     });
     infScroll.on('append', () => {
