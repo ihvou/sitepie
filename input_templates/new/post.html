@@ -56,7 +56,9 @@
 
         {{#post.isGallery}}
           {{#post.link}}
-            <img class="post__img" src="{{{post.link}}}" alt="image">
+            <a class="post__link" style="position: relative" target="_blank" rel="noopener noreferrer" href="{{{post.link}}}">
+              <img class="post__img" src="{{{post.link}}}" alt="image">
+            </a>
           {{/post.link}}
           {{^post.link}}
             {{#post.media}}
@@ -67,7 +69,9 @@
 
         {{#post.isImage}}
           {{#post.link}}
-            <img class="post__img" src="{{{post.link}}}" alt="image">
+            <a class="post__link" style="position: relative" target="_blank" rel="noopener noreferrer" href="{{{post.link}}}">
+              <img class="post__img" src="{{{post.link}}}" alt="image">
+            </a>
           {{/post.link}}
           {{^post.link}}
             <img class="post__img" src="{{{post.main_image}}}" alt="image">
