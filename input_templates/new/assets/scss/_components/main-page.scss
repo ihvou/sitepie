@@ -22,6 +22,11 @@
 
 .content {
   column-count: 4;
+  text-align: center;
+
+  >div {
+    text-align: left;
+  }
 
   &--loading {
     visibility: hidden;
