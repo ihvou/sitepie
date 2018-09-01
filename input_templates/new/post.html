@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{post.title}}</title>
   <!-- Basic page info =================================================== -->
-  <meta name="description" content="{{{post.description}}}">
+  <meta name="description" content="{{post.description}}">
 
   <!-- Stylesheet ======================================================== -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -43,7 +43,9 @@
       <div class="post__content">
         {{#post.isGif}}
           {{#post.link}}
-            <img src="{{{post.link}}}" data-src="{{{post.link}}}" alt="">
+            {{#post.media}}
+              <img src="{{{post.link}}}" data-src="{{{.}}}" alt="">
+            {{/post.media}}
             <a class="post__link post__link--hidden" target="_blank" rel="noopener noreferrer" href="{{{post.link}}}"></a>
           {{/post.link}}
           {{^post.link}}
@@ -57,7 +59,9 @@
         {{#post.isGallery}}
           {{#post.link}}
             <a class="post__link" style="position: relative" target="_blank" rel="noopener noreferrer" href="{{{post.link}}}">
-              <img class="post__img" src="{{{post.link}}}" alt="image">
+              {{#post.media}}
+                <img class="post__img" src="{{{.}}}" alt="image">
+              {{/post.media}}
             </a>
           {{/post.link}}
           {{^post.link}}
@@ -70,7 +74,7 @@
         {{#post.isImage}}
           {{#post.link}}
             <a class="post__link" style="position: relative" target="_blank" rel="noopener noreferrer" href="{{{post.link}}}">
-              <img class="post__img" src="{{{post.link}}}" alt="image">
+              <img class="post__img" src="{{{post.main_image}}}" alt="image">
             </a>
           {{/post.link}}
           {{^post.link}}
@@ -130,7 +134,7 @@
     <div class="blog-block">
       <a href="index.html"><img src="{{{header.media}}}" alt="avatar"></a>
       <div class="blog-block__info">
-        <h3 class="blog-block__title"> <a href="/index.html">{{header.title}}</a></h3>
+        <h3 class="blog-block__title"> <a href="/">{{header.title}}</a></h3>
         <p class="blog-block__description">{{{header.description}}}</p>
 
         <ul class="tag-list">
