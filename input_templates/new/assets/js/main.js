@@ -108,10 +108,11 @@ MainModule.prototype.handleDisableJs = function() {
 };
 
 MainModule.prototype.prepearForLazyLoading = function() {
-  document.querySelectorAll('.lazy-img-js').forEach(item => {
-    item.setAttribute('data-normal', item.getAttribute('src'));
-    item.setAttribute('src', '');
-  })
+  $('.lazy-img-js').Lazy();
+  // document.querySelectorAll('.lazy-img-js').forEach(item => {
+  //   item.setAttribute('data-normal', item.getAttribute('src'));
+  //   item.setAttribute('src', '');
+  // })
 };
 
 MainModule.prototype.checkTitle = function() {
@@ -129,7 +130,7 @@ MainModule.prototype.init = function() {
 
   this.handleDisableJs();
 
-  this.isMobile() && this.prepearForLazyLoading();
+  this.prepearForLazyLoading();
 
   window.addEventListener('click', (e) => {
     if (this.DOM.filterList && !this.DOM.filterList.contains(e.target)) {
@@ -189,7 +190,7 @@ MainModule.prototype.init = function() {
       status: '.page-load-status',
     });
     infScroll.on('append', () => {
-      this.isMobile() && this.prepearForLazyLoading();
+      this.prepearForLazyLoading();
       this.instance && this.instance.update();
     });
   }
