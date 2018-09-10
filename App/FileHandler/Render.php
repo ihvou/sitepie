@@ -90,7 +90,7 @@ class Render{
         for($i = 1; $i <= $pagesCount; $i++){
             $mustache = MustacheHandler::getRenderMustacheObject($this->template);
             $renderData['page_number'] = $i;
-            $postsPart = array_slice($posts,$i-1,POSTS_PER_PAGE);
+            $postsPart = array_slice($posts,($i-1)*POSTS_PER_PAGE,POSTS_PER_PAGE);
             $renderData['posts'] = $this->insertAdsRandomly($postsPart,$ads);
 
             if($pagesCount == 1){
