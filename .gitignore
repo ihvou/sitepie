@@ -12,3 +12,5 @@ index.php
 /public
 .DS_Store
 /node_modules
+composer.lock
+composer_web.json
