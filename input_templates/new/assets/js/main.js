@@ -108,7 +108,11 @@ MainModule.prototype.handleDisableJs = function() {
 };
 
 MainModule.prototype.prepearForLazyLoading = function() {
-  $('.lazy-img-js').Lazy();
+  $('.lazy-img-js').Lazy({
+    afterLoad: function(element) {
+      $(element).parent('.post__content').find('.spinner-wrapper').remove();
+    },
+  });
   // document.querySelectorAll('.lazy-img-js').forEach(item => {
   //   item.setAttribute('data-normal', item.getAttribute('src'));
   //   item.setAttribute('src', '');

@@ -94,7 +94,12 @@
             <div class="post__content">
                 {{#isGif}}
                     {{#media}}
-                    <img src="{{{main_image}}}" data-src="{{{.}}}" alt="">
+                    <div class="spinner-wrapper">
+                        <div class="spinner-content">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                    <img class="lazy-img-js" src="{{{main_image}}}" data-src="{{{.}}}" alt="">
                     <a class="post__link post__link--hidden" target="_blank" rel="noopener noreferrer" href="{{{.}}}"></a>
                     {{/media}}
                 {{/isGif}}
