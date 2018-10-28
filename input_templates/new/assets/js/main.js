@@ -19,7 +19,6 @@ function MainModule() {
   this.DOM = {};
 
   this.DOM.playScreens = document.querySelectorAll('.play-screen');
-  this.DOM.gifs = document.querySelectorAll('.post--gif .post__content img');
   this.DOM.title = document.querySelector('.title-js');
 
   this.DOM.filterBtn = document.querySelector('.vertical-dots');
@@ -35,9 +34,7 @@ function MainModule() {
     item.addEventListener('click', this.playClick)
   })
 
-  this.DOM.gifs.forEach((item) => {
-    item.addEventListener('click', this.gifClickHandler)
-  })
+  $(document).on('click', '.post--gif .post__content', this.gifClickHandler);
 
   this.DOM.filterBtn && this.DOM.filterBtn.addEventListener('click', this.toggleFilters.bind(null, this))
 }
@@ -55,13 +52,21 @@ MainModule.prototype.playClick = function(event) {
 };
 
 MainModule.prototype.gifClickHandler = function(event) {
-  const gifEl = event.currentTarget;
+  const el = event.currentTarget;
+  const gifEl = el.querySelector('img');
   const source = gifEl.getAttribute('data-src');
   const play = gifEl.getAttribute('data-play');
+  const spinner = el.querySelector('.spinner-wrapper');
+
+  spinner.classList.remove("hidden");
 
   if (!play) {
     gifEl.setAttribute('data-play', 'true');
     gifEl.setAttribute('src', source);
+    gifEl.addEventListener('load', function() { 
+      el.setAttribute('data-stoped', 'false');
+      spinner.classList.add("hidden");
+    }, false);
     gifEl.parentNode.querySelector('.post__link').classList.remove('post__link--hidden');
   }
 };

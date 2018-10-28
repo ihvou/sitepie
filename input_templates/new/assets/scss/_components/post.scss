@@ -50,13 +50,17 @@
     }
   }
   &--gif {
+    .hidden {
+      display: none;
+    }
+
     .post-icon {
       width: 21px;
       background-size: 21px;
       background-image: url('/assets/images/icons/gif-icon.svg');
     }
 
-    .post__content[data-stoped=true]:hover {
+    .post__content[data-stoped=true] {
       &:after {
         content: '';
         position: absolute;
@@ -75,6 +79,11 @@
       overflow: hidden;
     }
   }
+
+  &--gif-autoplay {
+
+  }
+  
   &--image-gallery {
     .post-icon {
       width: 20px;
@@ -176,6 +185,7 @@
     font-size: 0;
     display: flex;
     align-items: center;
+    overflow: hidden;
   }
 
   .swiper-pagination {

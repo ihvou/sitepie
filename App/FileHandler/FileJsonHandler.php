@@ -129,6 +129,9 @@ class FileJsonHandler{
                 case 'gif':
                     $postItem->isGif = true;
                     break;
+                case 'gif-autoplay':
+                    $postItem->isGifAutoplay = true;
+                    break;
                 case 'article':
                     $postItem->isArticle = true;
                     break;
