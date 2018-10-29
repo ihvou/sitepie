@@ -91,13 +91,29 @@
 
         {{#posts}}
         <div class="post post--{{sub_type}}">
-            <div class="post__content">
+            <div class="post__content" data-stoped="true">
                 {{#isGif}}
                     {{#media}}
+                    <div class="spinner-wrapper hidden">
+                        <div class="spinner-content">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
                     <img src="{{{main_image}}}" data-src="{{{.}}}" alt="">
                     <a class="post__link post__link--hidden" target="_blank" rel="noopener noreferrer" href="{{{.}}}"></a>
                     {{/media}}
                 {{/isGif}}
+                {{#isGifAutoplay}}
+                    {{#media}}
+                    <div class="spinner-wrapper">
+                        <div class="spinner-content">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                    <img class="lazy-img-js" src="{{{main_image}}}" data-src="{{{.}}}" alt="">
+                    <a class="post__link post__link--hidden" target="_blank" rel="noopener noreferrer" href="{{{.}}}"></a>
+                    {{/media}}
+                {{/isGifAutoplay}}
                 {{#isGallery}}
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
@@ -113,6 +129,11 @@
                 </div>
                 {{/isGallery}}
                 {{#isImage}}
+                    <div class="spinner-wrapper">
+                        <div class="spinner-content">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
                     <img class="post__img lazy-img-js" data-src="{{{main_image}}}" alt="image">
                 {{/isImage}}
                 {{#isVideo}}
