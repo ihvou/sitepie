@@ -18,7 +18,6 @@ function MainModule() {
 
   this.DOM = {};
 
-  this.DOM.playScreens = document.querySelectorAll('.play-screen');
   this.DOM.title = document.querySelector('.title-js');
 
   this.DOM.filterBtn = document.querySelector('.vertical-dots');
@@ -30,10 +29,7 @@ function MainModule() {
   this.isTagPage = !!this.DOM.title;
   this.isIndex = !!document.querySelector('.index-js');
 
-  this.DOM.playScreens.forEach((item) => {
-    item.addEventListener('click', this.playClick)
-  })
-
+  $(document).on('click', '.post--video .play-screen', this.playClick);
   $(document).on('click', '.post--gif .post__content', this.gifClickHandler);
 
   this.DOM.filterBtn && this.DOM.filterBtn.addEventListener('click', this.toggleFilters.bind(null, this))
@@ -57,6 +53,7 @@ MainModule.prototype.gifClickHandler = function(event) {
   const source = gifEl.getAttribute('data-src');
   const play = gifEl.getAttribute('data-play');
   const spinner = el.querySelector('.spinner-wrapper');
+  el.setAttribute('data-stoped', 'false');
 
   spinner.classList.remove("hidden");
 
@@ -64,7 +61,6 @@ MainModule.prototype.gifClickHandler = function(event) {
     gifEl.setAttribute('data-play', 'true');
     gifEl.setAttribute('src', source);
     gifEl.addEventListener('load', function() { 
-      el.setAttribute('data-stoped', 'false');
       spinner.classList.add("hidden");
     }, false);
     gifEl.parentNode.querySelector('.post__link').classList.remove('post__link--hidden');
@@ -117,6 +113,9 @@ MainModule.prototype.prepearForLazyLoading = function() {
     afterLoad: function(element) {
       $(element).parent('.post__content').find('.spinner-wrapper').remove();
     },
+    onError: function(element) {
+      $(element).parent('.post__content').find('.spinner-wrapper').remove();
+    }
   });
   // document.querySelectorAll('.lazy-img-js').forEach(item => {
   //   item.setAttribute('data-normal', item.getAttribute('src'));
