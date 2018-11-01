@@ -5,6 +5,10 @@
   box-shadow: 1px 1px 2px 1px #bdbdbd;
   margin-top: 28px;
 
+  .swiper-container {
+    z-index: 0;
+  }
+
   .spinner-wrapper {
     display: flex;
     position: absolute;
@@ -60,7 +64,8 @@
       background-image: url('/assets/images/icons/gif-icon.svg');
     }
 
-    .post__content[data-stoped=true] {
+    .post__content[data-stoped=true]:hover {
+      cursor: pointer;
       &:after {
         content: '';
         position: absolute;
@@ -98,6 +103,7 @@
 
     .post__content {
       overflow: hidden;
+      z-index: 1;
     }
   }
   &--paper {
