@@ -64,8 +64,10 @@
       background-image: url('/assets/images/icons/gif-icon.svg');
     }
 
-    .post__content[data-stoped=true]:hover {
+    .post__content[data-stoped=true] {
       cursor: pointer;
+      min-height: 150px;
+      background-color: #b2b2b2;
       &:after {
         content: '';
         position: absolute;
