@@ -13,6 +13,7 @@
     <!-- Stylesheet ======================================================== -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/swiper.min.css">
+    <link rel="stylesheet" href="assets/css/video-js.css">
 
     <!-- Js =========================================================== -->
 
@@ -25,6 +26,8 @@
     <script type="text/javascript" src="assets/js/main.js"></script>
 
     <script type="text/javascript" src="assets/js/libs/swiper.min.js"></script>
+    
+    <script type="text/javascript" src="assets/js/libs/video.js"></script>
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
@@ -137,8 +140,8 @@
                     <img class="post__img lazy-img-js" src="{{{main_image}}}" data-src="{{{.}}}" alt="image">
                 {{/isImage}}
                 {{#isVideo}}
-                <div class="play-screen"></div>
-                    <video class="video-js">
+                    <div class="play-screen"></div>
+                    <video class="video-js vjs-fluid" data-setup='{}'>
                         {{#media}}
                             <source src="{{{.}}}" type="video/mp4">
                         {{/media}}

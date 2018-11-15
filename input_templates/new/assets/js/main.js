@@ -43,7 +43,7 @@ MainModule.prototype.playClick = function(event) {
 
   if (!play) {
     video.setAttribute('data-play', 'true');
-    video.parentNode.querySelector('.post__link').classList.remove('post__link--hidden');
+    // video.parentNode.querySelector('.post__link').classList.remove('post__link--hidden');
   }
 };
 

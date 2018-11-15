@@ -13,6 +13,7 @@
     <!-- Stylesheet ======================================================== -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/swiper.min.css">
+    <link rel="stylesheet" href="assets/css/video-js.css">
 
     <!-- Js =========================================================== -->
 
@@ -25,6 +26,8 @@
     <script type="text/javascript" src="assets/js/main.js"></script>
 
     <script type="text/javascript" src="assets/js/libs/swiper.min.js"></script>
+
+    <script type="text/javascript" src="assets/js/libs/video.js"></script>
 
     <script type="text/javascript" src="assets/js/libs/late-loader.js"></script>
 
@@ -133,7 +136,7 @@
                 {{/isImage}}
                 {{#isVideo}}
                     <div class="play-screen"></div>
-                    <video class="video-js">
+                    <video class="video-js vjs-fluid" data-setup='{}'>
                     {{#media}}
                         <source src="{{{.}}}" type="video/mp4">
                     {{/media}}
