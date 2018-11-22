@@ -13,6 +13,7 @@
   <!-- Stylesheet ======================================================== -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/swiper.min.css">
+  <link rel="stylesheet" href="assets/css/video-js.css">
 
   <!-- Js =========================================================== -->
 
@@ -25,6 +26,8 @@
   <script type="text/javascript" src="assets/js/main.js"></script>
 
   <script type="text/javascript" src="assets/js/libs/swiper.min.js"></script>
+
+  <script type="text/javascript" src="assets/js/libs/video.js"></script>
   <!-- Favicon =========================================================== -->
 
   {{#header_script}}
@@ -55,7 +58,7 @@
             {{/post.media}}
           {{/post.link}}
         {{/post.isGif}}
-
+        
         {{#post.isGifAutoplay}}
           {{#post.link}}
             {{#post.media}}
@@ -70,7 +73,7 @@
             {{/post.media}}
           {{/post.link}}
         {{/post.isGifAutoplay}}
-
+        
         {{#post.isGallery}}
           {{#post.link}}
             <a class="post__link" style="position: relative" target="_blank" rel="noopener noreferrer" href="{{{post.link}}}">
@@ -99,7 +102,7 @@
 
         {{#post.isVideo}}
           <div class="play-screen"></div>
-          <video class="video-js">
+          <video class="video-js vjs-fluid" data-setup='{}'>
             {{#post.link}}
               <source src="{{{post.link}}}" type="video/mp4">
             {{/post.link}}
@@ -172,5 +175,4 @@
   {{{body_script}}}
 {{/body_script}}
 </body>
-
 </html>

@@ -14,3 +14,4 @@ index.php
 /node_modules
 composer.lock
 composer_web.json
+/nbproject/private/

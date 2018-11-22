@@ -43,27 +43,34 @@ MainModule.prototype.playClick = function(event) {
 
   if (!play) {
     video.setAttribute('data-play', 'true');
-    video.parentNode.querySelector('.post__link').classList.remove('post__link--hidden');
+    // video.parentNode.querySelector('.post__link').classList.remove('post__link--hidden');
   }
 };
 
 MainModule.prototype.gifClickHandler = function(event) {
+  event.preventDefault();
   const el = event.currentTarget;
   const gifEl = el.querySelector('img');
-  const source = gifEl.getAttribute('data-src');
-  const play = gifEl.getAttribute('data-play');
+  const dataSource = gifEl.getAttribute('data-src');
+  const src = gifEl.getAttribute('src');
+  const play = JSON.parse(gifEl.getAttribute('data-play'));
   const spinner = el.querySelector('.spinner-wrapper');
-  el.setAttribute('data-stoped', 'false');
-
-  spinner.classList.remove("hidden");
 
   if (!play) {
+    el.setAttribute('data-stoped', 'false');
+    spinner.classList.remove("hidden");
     gifEl.setAttribute('data-play', 'true');
-    gifEl.setAttribute('src', source);
+    gifEl.setAttribute('src', dataSource);
+    gifEl.setAttribute('data-src', src);
     gifEl.addEventListener('load', function() { 
       spinner.classList.add("hidden");
     }, false);
     gifEl.parentNode.querySelector('.post__link').classList.remove('post__link--hidden');
+  } else {
+    el.setAttribute('data-stoped', 'true');
+    gifEl.setAttribute('data-play', 'false');
+    gifEl.setAttribute('data-src', src);
+    gifEl.setAttribute('src', dataSource);
   }
 };
 
