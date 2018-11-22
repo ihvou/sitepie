@@ -56,6 +56,21 @@
           {{/post.link}}
         {{/post.isGif}}
 
+        {{#post.isGifAutoplay}}
+          {{#post.link}}
+            {{#post.media}}
+              <img src="{{{post.link}}}" data-src="{{{.}}}" alt="">
+            {{/post.media}}
+            <a class="post__link post__link--hidden" target="_blank" rel="noopener noreferrer" href="{{{post.link}}}"></a>
+          {{/post.link}}
+          {{^post.link}}
+            {{#post.media}}
+              <img src="{{{.}}}" data-src="{{{.}}}" alt="">
+              <a class="post__link post__link--hidden" target="_blank" rel="noopener noreferrer" href="{{{.}}}"></a>
+            {{/post.media}}
+          {{/post.link}}
+        {{/post.isGifAutoplay}}
+
         {{#post.isGallery}}
           {{#post.link}}
             <a class="post__link" style="position: relative" target="_blank" rel="noopener noreferrer" href="{{{post.link}}}">
